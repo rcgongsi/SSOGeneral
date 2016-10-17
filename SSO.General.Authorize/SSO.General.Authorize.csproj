@@ -101,6 +101,7 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="单点登录.vsdx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Login.aspx" />
