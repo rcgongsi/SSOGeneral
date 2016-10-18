@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 using System.Web.UI;
 
 namespace SSO.General.Helper
@@ -34,6 +35,13 @@ namespace SSO.General.Helper
         public override void Redirect(string url)
         {
             Page.Response.Redirect(url);
+        }
+
+        public override void Write(string text)
+        {
+            Page.Response.Clear();
+            Page.Response.Write(text);
+            Page.Response.End();
         }
     }
 }

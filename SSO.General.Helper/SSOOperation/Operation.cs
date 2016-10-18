@@ -31,5 +31,11 @@ namespace SSO.General.Helper
         /// </summary>
         /// <param name="url">目标URL</param>
         public abstract void Redirect(string url);
+
+        /// <summary>
+        /// 输出内容到页面
+        /// </summary>
+        /// <param name="text"></param>
+        public abstract void Write(string text);
     }
 }
