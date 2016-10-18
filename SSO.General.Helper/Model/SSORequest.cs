@@ -17,7 +17,7 @@ namespace SSO.General.Helper.Model
     /// </summary>
     public class SSORequest
     {
-        public string ID { get; set; }
+        public string Code { get; set; }
         public string TimeStamp { get; set; }
         public string AppUrl { get; set; }
         public string Token { get; set; }

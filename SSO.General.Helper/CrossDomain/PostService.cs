@@ -19,28 +19,24 @@ namespace SSO.General.Helper.CrossDomain
     public class PostService : ISendService
     {
         private Dictionary<string, string> Inputs { get; set; } = new Dictionary<string, string>();
-        private readonly string Url;
+        private string Url;
         private const string FormName = "form1";
         private const string Method = "post";
-
-        public PostService(string url)
-        {
-            Url = url;
-        }
 
         public void Add(string name, string value)
         {
             Inputs.Add(name, value);
         }
 
-        public void SendRequest(Operation operation)
+        public void SendRequest(string url, Operation operation)
         {
+            Url = url;
             StringBuilder builder = new StringBuilder("<html><head></head>");
             builder.AppendFormat("<body onload =\"document.{0}.submit()\">", FormName);
             builder.AppendFormat("<form name =\"{0}\" method =\"{1}\" action =\"{2}\">", FormName, Method, Url);
             foreach (var item in Inputs)
             {
-                builder.AppendFormat("<input name =\"{0}\" type =\"hidden\" value =\"{1}\">", Inputs.Keys, Inputs.Values);
+                builder.AppendFormat("<input name =\"{0}\" type =\"hidden\" value =\"{1}\">", item.Key, item.Value);
             }
             builder.AppendFormat("</form></body></html>");
             operation.Write(builder.ToString());

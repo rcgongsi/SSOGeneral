@@ -21,7 +21,7 @@ namespace SSO.General.Helper.CrossDomain
         /// <summary>
         /// 创建Token
         /// </summary>
-        void CreateToken(SSORequest sso);
+        string CreateToken(SSORequest sso);
         /// <summary>
         /// 验证Token
         /// </summary>

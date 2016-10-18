@@ -14,6 +14,7 @@ namespace SSO.General.Helper.CrossDomain
 {
     public interface ISendService
     {
-        void SendRequest(Operation operation);
+        void SendRequest(string url, Operation operation);
+        void Add(string name, string value);
     }
 }

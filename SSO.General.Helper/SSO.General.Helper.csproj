@@ -49,6 +49,7 @@
     <Compile Include="CrossDomain\TokenManager.cs" />
     <Compile Include="Model\SSORequest.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="SSOGeneralCrossClient.cs" />
     <Compile Include="SSOGeneralCrossDomain.cs" />
     <Compile Include="SSOOperation\OperationHttpContext.cs" />
     <Compile Include="SSOOperation\OperationPage.cs" />

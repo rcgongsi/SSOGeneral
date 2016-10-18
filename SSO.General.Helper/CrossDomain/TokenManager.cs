@@ -13,18 +13,20 @@ using SSO.General.Helper.Model;
 
 namespace SSO.General.Helper.CrossDomain
 {
+    /// <summary>
+    /// Token管理类
+    /// </summary>
     public class TokenManager : ITokenManager
     {
-        private const string Key = "22362E7A9285DD53A0BBC2932F9733C505DC04EDBFE00D70";
-        private const string Iv = "1E7FA9231E7FA923";
+        private const string Key = "5213ABCD";
+        private const string Iv = "ACBD9874";
 
         /// <summary>
         /// 创建Token凭证
         /// </summary>
-        public void CreateToken(SSORequest sso)
+        public string CreateToken(SSORequest sso)
         {
-            string token = EncryptToken(sso);
-            sso.Token = token;
+            return EncryptToken(sso);
         }
 
         /// <summary>
@@ -32,24 +34,21 @@ namespace SSO.General.Helper.CrossDomain
         /// </summary>
         public bool ValidateToken(SSORequest sso)
         {
-            throw new NotImplementedException();
+            if (sso.Token == EncryptToken(sso))
+            {
+                return true;
+            }
+            return false;
         }
 
         /// <summary>
         /// 加密Token
-        /// 加密规则：ID + 时间戳 + 来源Url 进行 字符串反转 进行 DES加密
+        /// 加密规则：ID + 时间戳 + 来源Url 然后对所有进行 DES加密
         /// </summary>
         private string EncryptToken(SSORequest sso)
         {
-            return "";
-        }
-
-        /// <summary>
-        /// 解密Token
-        /// </summary>
-        private SSORequest DecryptToken(string token)
-        {
-            return new SSORequest();
+            string tokenText = sso.Code + sso.TimeStamp + sso.AppUrl;
+            return EDSHelper.EnDES(tokenText, Key.ToByte(), Iv.ToByte());
         }
     }
 }
