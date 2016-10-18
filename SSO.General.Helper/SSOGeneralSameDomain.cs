@@ -17,7 +17,7 @@ namespace SSO.General.Helper
             Operation = new OperationPage(page);
         }
 
-        public SSOGeneralSameDomain(string cookieName, TimeSpan overdue, HttpContext context) : base(cookieName, overdue)
+        public SSOGeneralSameDomain(string cookieName, TimeSpan overdue, HttpContextBase context) : base(cookieName, overdue)
         {
             Operation = new OperationHttpContext(context);
         }
@@ -53,7 +53,7 @@ namespace SSO.General.Helper
             return result != null ? FormsAuthentication.Decrypt(result).UserData : "";
         }
 
-        public static string GetCookieValue(string cookieName, HttpContext context)
+        public static string GetCookieValue(string cookieName, HttpContextBase context)
         {
             Operation Operation = new OperationHttpContext(context);
             string result = Operation.GetCookie(cookieName)?.Value;

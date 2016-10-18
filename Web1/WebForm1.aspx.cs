@@ -11,7 +11,7 @@ namespace SSO.General.Web1
             {
                 if (User.Identity.IsAuthenticated)
                 {
-                    string result = SSOGeneralSameDomain.GetCookieValue("CookiesTest", this);
+                    var result = SSOGeneralSameDomain.GetCookieValue("CookiesTest", this);
                     txtUserData.Text = result;
                 }
             }

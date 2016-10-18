@@ -7,9 +7,9 @@ namespace SSO.General.Helper
     /// </summary>
     public class OperationHttpContext : Operation
     {
-        public HttpContext Context { get; set; }
+        public HttpContextBase Context { get; set; }
 
-        public OperationHttpContext(HttpContext context)
+        public OperationHttpContext(HttpContextBase context)
         {
             Context = context;
         }
