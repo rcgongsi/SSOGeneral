@@ -4,6 +4,7 @@
 // created by 晨星宇
 // at 2016/10/19 17:42:42
 //--------------------------------------------
+using SSO.Cross.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,14 +15,45 @@ namespace SSO.Cross.Domain.SSOOperation
 {
     public class OperationToken : IOperationToken
     {
-        public string GetToken(string token)
+        public static List<SSOToken> tokenList = new List<SSOToken>();
+
+        public string GetUserData(string token)
         {
-            throw new NotImplementedException();
+            SSOToken tokenModel = tokenList.FirstOrDefault(p => p.Token == token && p.OverdueTime > DateTime.Now);
+            if (tokenModel != null)
+            {
+                return tokenModel.UserData;
+            }
+            tokenList.RemoveAll(p => p.OverdueTime < DateTime.Now);
+            return "";
         }
 
-        public string SetToken(string userData)
+        public string SetToken(string userData, TimeSpan saveInterval)
         {
-            throw new NotImplementedException();
+            SSOToken tokenModel = tokenList.FirstOrDefault(p => p.UserData == userData && p.OverdueTime > DateTime.Now);
+            if (tokenModel != null)
+            {
+                return tokenModel.Token;
+            }
+            SSOToken ssoModel = new SSOToken
+            {
+                Token = CreateToken(),
+                CreateTime = DateTime.Now,
+                UserData = userData,
+                OverdueTime = DateTime.Now.Add(saveInterval)
+            };
+            tokenList.Add(ssoModel);
+            
+            return ssoModel.Token;
+        }
+
+        /// <summary>
+        /// 生成凭据
+        /// </summary>
+        /// <returns></returns>
+        public string CreateToken()
+        {
+            return Guid.NewGuid().ToString().Replace("-", "");
         }
     }
 }

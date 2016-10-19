@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\SSOToken.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SSOGeneral.cs" />
     <Compile Include="SSOGeneralCrossDomain.cs" />
@@ -51,6 +52,8 @@
     <Compile Include="SSOOperation\OperationPage.cs" />
     <Compile Include="SSOOperation\OperationSecret.cs" />
     <Compile Include="SSOOperation\OperationToken.cs" />
+    <Compile Include="Tools\ByteHelper.cs" />
+    <Compile Include="Tools\KeyHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

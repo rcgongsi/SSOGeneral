@@ -20,10 +20,11 @@ namespace SSO.Cross.Domain.SSOOperation
         /// <summary>
         /// 获取Token
         /// </summary>
-        string GetToken(string token);
+        string GetUserData(string token);
+
         /// <summary>
         /// 设置Token
         /// </summary>
-        string SetToken(string userData);
+        string SetToken(string userData, TimeSpan saveInterval);
     }
 }

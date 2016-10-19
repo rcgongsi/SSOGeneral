@@ -4,6 +4,7 @@
 // created by 晨星宇
 // at 2016/10/19 17:46:15
 //--------------------------------------------
+using SSO.Cross.Domain.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,14 +15,24 @@ namespace SSO.Cross.Domain.SSOOperation
 {
     public class OperationSecret : IOperationSecret
     {
+        public const string Key = "A1B2C3D4";
+        public const string Iv = "98745621";
         public string Decryption(string token)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(token))
+            {
+                return "";
+            }
+            return KeyHelper.DeDES(token, Key.ToByte(), Iv.ToByte());
         }
 
         public string Encryption(string token)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(token))
+            {
+                return "";
+            }
+            return KeyHelper.EnDES(token, Key.ToByte(), Iv.ToByte());
         }
     }
 }

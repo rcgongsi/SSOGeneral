@@ -1,4 +1,5 @@
-﻿using SSO.Same.Domain;
+﻿using SSO.Cross.Domain;
+using SSO.Same.Domain;
 using System;
 
 namespace SSO.General.Authorize
@@ -11,7 +12,10 @@ namespace SSO.General.Authorize
             {
                 if (User.Identity.IsAuthenticated)
                 {
-                    string result = SSOGeneralSameDomain.GetCookieValue("CookiesTest", this);
+                    //string result = SSOGeneralSameDomain.GetCookieValue("CookiesTest", this);
+                    SSOGeneralCrossDomain sso = new SSOGeneralCrossDomain(this);
+                    var token = sso.GetCookie("CookiesTest");
+                    var result = sso.GetUserData(token);
                     txtUserData.Text = result;
                 }
             }

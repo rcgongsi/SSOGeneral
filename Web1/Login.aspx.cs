@@ -1,4 +1,5 @@
-﻿using SSO.Same.Domain;
+﻿using SSO.Cross.Domain;
+using SSO.Same.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,8 @@ namespace Web1
         {
             if (!IsPostBack)
             {
-                string url = Request.Url.Scheme + "://" + Request.Url.Authority + Request.QueryString["ReturnUrl"];
-                SSOGeneralCrossClient client = new SSOGeneralCrossClient(this);
-                client.LogIn("WEB1", url, "http://localhost:51666/Login.aspx", new TimeSpan(0, 1, 1));
+                SSOGeneralCrossDomain sso = new SSOGeneralCrossDomain(this);
+                sso.LogInClient("http://localhost:51666/Login.aspx?link=http://localhost:56757/Login.aspx", "CookiesTest", new TimeSpan(0, 1, 1));
             }
         }
     }

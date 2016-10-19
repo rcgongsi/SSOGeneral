@@ -19,10 +19,6 @@ namespace SSO.General.Authorize
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                Presenter.Initialize(this);
-            }
         }
 
         /// <summary>
