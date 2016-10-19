@@ -3,7 +3,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 
-namespace SSO.General.Helper
+namespace SSO.Same.Domain
 {
     /// <summary>
     /// 同一域名单点登录

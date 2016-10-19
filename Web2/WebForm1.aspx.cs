@@ -1,4 +1,4 @@
-﻿using SSO.General.Helper;
+﻿using SSO.Same.Domain;
 using System;
 
 namespace SSO.General.Web2

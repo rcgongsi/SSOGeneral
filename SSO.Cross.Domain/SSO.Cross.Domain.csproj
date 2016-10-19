@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B5876BEA-6644-4627-9539-30F72DBD5505}</ProjectGuid>
+    <ProjectGuid>{7D0FAC1B-8CB9-4B10-93AA-26052CAF626A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SSO.General.Helper</RootNamespace>
-    <AssemblyName>SSO.General.Helper</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <RootNamespace>SSO.Cross.Domain</RootNamespace>
+    <AssemblyName>SSO.Cross.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,7 +32,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,24 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CrossDomain\ISendService.cs" />
-    <Compile Include="CrossDomain\ITokenManager.cs" />
-    <Compile Include="CrossDomain\PostService.cs" />
-    <Compile Include="CrossDomain\TokenManager.cs" />
-    <Compile Include="Model\SSORequest.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="SSOGeneralCrossClient.cs" />
-    <Compile Include="SSOGeneralCrossDomain.cs" />
-    <Compile Include="SSOOperation\OperationHttpContext.cs" />
-    <Compile Include="SSOOperation\OperationPage.cs" />
-    <Compile Include="SSOOperation\Operation.cs" />
-    <Compile Include="SSOGeneralSameDomain.cs" />
-    <Compile Include="Tool\ByteHelper.cs" />
-    <Compile Include="Tool\EDSHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SSOGeneral.cs" />
+    <Compile Include="SSOGeneralCrossDomain.cs" />
+    <Compile Include="SSOOperation\IOperationSecret.cs" />
+    <Compile Include="SSOOperation\IOperationToken.cs" />
+    <Compile Include="SSOOperation\Operation.cs" />
+    <Compile Include="SSOOperation\OperationHttpContext.cs" />
+    <Compile Include="SSOOperation\OperationPage.cs" />
+    <Compile Include="SSOOperation\OperationSecret.cs" />
+    <Compile Include="SSOOperation\OperationToken.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

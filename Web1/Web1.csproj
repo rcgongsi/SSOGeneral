@@ -138,9 +138,9 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SSO.General.Helper\SSO.General.Helper.csproj">
+    <ProjectReference Include="..\SSO.General.Helper\SSO.Same.Domain.csproj">
       <Project>{b5876bea-6644-4627-9539-30f72dbd5505}</Project>
-      <Name>SSO.General.Helper</Name>
+      <Name>SSO.Same.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

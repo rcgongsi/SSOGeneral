@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSO.General.Authorize", "SSO.General.Authorize\SSO.General.Authorize.csproj", "{04F4A4CD-977D-4DCA-BA26-FD24DEE108C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSO.General.Helper", "SSO.General.Helper\SSO.General.Helper.csproj", "{B5876BEA-6644-4627-9539-30F72DBD5505}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSO.Same.Domain", "SSO.General.Helper\SSO.Same.Domain.csproj", "{B5876BEA-6644-4627-9539-30F72DBD5505}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web1", "Web1\Web1.csproj", "{C3F08AB5-85E5-4A01-B797-A91C44BAD00A}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc1", "Mvc1\Mvc1.csproj", "{58025037-68B9-43A1-A250-A4E34B321C82}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc2", "Mvc2\Mvc2.csproj", "{DFC333A9-93B3-4067-8B7E-DA1A396C1F0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSO.Cross.Domain", "SSO.Cross.Domain\SSO.Cross.Domain.csproj", "{7D0FAC1B-8CB9-4B10-93AA-26052CAF626A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{DFC333A9-93B3-4067-8B7E-DA1A396C1F0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFC333A9-93B3-4067-8B7E-DA1A396C1F0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFC333A9-93B3-4067-8B7E-DA1A396C1F0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D0FAC1B-8CB9-4B10-93AA-26052CAF626A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D0FAC1B-8CB9-4B10-93AA-26052CAF626A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D0FAC1B-8CB9-4B10-93AA-26052CAF626A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D0FAC1B-8CB9-4B10-93AA-26052CAF626A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

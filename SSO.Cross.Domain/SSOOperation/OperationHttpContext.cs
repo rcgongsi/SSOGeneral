@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web;
 
-namespace SSO.Same.Domain
+namespace SSO.Cross.Domain
 {
     /// <summary>
     /// MVC操作方法

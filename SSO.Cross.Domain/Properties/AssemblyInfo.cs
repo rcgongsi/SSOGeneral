@@ -1,14 +1,15 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("SSO.Same.Domain")]
+[assembly: AssemblyTitle("SSO.Cross.Domain")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SSO.Same.Domain")]
+[assembly: AssemblyProduct("SSO.Cross.Domain")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,9 +20,9 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("b5876bea-6644-4627-9539-30f72dbd5505")]
+[assembly: Guid("7d0fac1b-8cb9-4b10-93aa-26052caf626a")]
 
-// 程序集的版本信息由下列四个值组成:
+// 程序集的版本信息由下列四个值组成: 
 //
 //      主版本
 //      次版本

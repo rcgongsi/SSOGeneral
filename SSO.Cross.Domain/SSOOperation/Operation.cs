@@ -1,6 +1,6 @@
 ﻿using System.Web;
 
-namespace SSO.Same.Domain
+namespace SSO.Cross.Domain
 {
     /// <summary>
     /// 单点登录操作工厂

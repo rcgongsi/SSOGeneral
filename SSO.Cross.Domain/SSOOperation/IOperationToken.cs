@@ -1,30 +1,29 @@
 ﻿//--------------------------------------------
 // Copyright (C) 软通动力信息技术（集团）有限公司
-// filename :ITokenManager
+// filename :IOperationToken
 // created by 晨星宇
-// at 2016/10/18 17:38:49
+// at 2016/10/19 17:41:28
 //--------------------------------------------
-using SSO.General.Helper.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SSO.General.Helper.CrossDomain
+namespace SSO.Cross.Domain.SSOOperation
 {
     /// <summary>
-    /// Token相关操作
+    /// Token持久操作类
     /// </summary>
-    public interface ITokenManager
+    public interface IOperationToken
     {
         /// <summary>
-        /// 创建Token
+        /// 获取Token
         /// </summary>
-        string CreateToken(SSORequest sso);
+        string GetToken(string token);
         /// <summary>
-        /// 验证Token
+        /// 设置Token
         /// </summary>
-        bool ValidateToken(SSORequest sso);
+        string SetToken(string userData);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SSO.General.Helper
+namespace SSO.Same.Domain
 {
     /// <summary>
     /// 通用身份验证

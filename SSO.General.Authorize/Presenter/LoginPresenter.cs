@@ -1,6 +1,6 @@
 ﻿using SSO.General.Authorize.View;
-using SSO.General.Helper;
-using SSO.General.Helper.Model;
+using SSO.Same.Domain;
+using SSO.Same.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Web.UI;

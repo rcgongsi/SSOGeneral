@@ -2,7 +2,7 @@
 using System.Web;
 using System.Web.UI;
 
-namespace SSO.Same.Domain
+namespace SSO.Cross.Domain
 {
     /// <summary>
     /// WebForm操作方法
