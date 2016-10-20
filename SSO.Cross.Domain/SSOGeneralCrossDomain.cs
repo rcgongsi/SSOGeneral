@@ -1,15 +1,5 @@
-//--------------------------------------------
-// Copyright (C) 软通动力信息技术（集团）有限公司
-// filename :SSOGeneralCrossDomain
-// created by 晨星宇
-// at 2016/10/19 17:51:44
-//--------------------------------------------
 using SSO.Cross.Domain.SSOOperation;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -21,17 +11,23 @@ namespace SSO.Cross.Domain
     /// </summary>
     public class SSOGeneralCrossDomain : SSOGeneral
     {
-        public IOperationSecret secretService = new OperationSecret();
-        public IOperationToken tokenService = new OperationToken();
+        internal IOperationSecret secretService = new OperationSecret();
+        internal IOperationToken tokenService;
+        internal string Token { get { return Operation.GetRequest("token"); } }
+        internal string ReturnUrl { get { return Operation.GetRequest("ReturnUrl"); } }
+        internal string Link { get { return Operation.GetRequest("link"); } }
+        internal string UserData { get { return Operation.GetRequest("userData"); } }
 
         public SSOGeneralCrossDomain(HttpContextBase context)
         {
             Operation = new OperationHttpContext(context);
+            tokenService = new OperationCache(Operation);
         }
 
         public SSOGeneralCrossDomain(Page page)
         {
             Operation = new OperationPage(page);
+            tokenService = new OperationCache(Operation);
         }
 
         /// <summary>
@@ -41,20 +37,37 @@ namespace SSO.Cross.Domain
         public void LogIn(string userData, string cookieName, TimeSpan overdueTime)
         {
             string token = tokenService.SetToken(userData, overdueTime);
-            string url = "";
-            if (Operation.GetRequest("link") != "")
-            {
-                url = Operation.GetRequest("link");
-            }
-            else if (Operation.GetRequest("ReturnUrl") != "")
-            {
-                url = Operation.GetRequest("ReturnUrl");
-            }
-            url += "?token=" + token;
-
+            string url = GetRedirectUrl(token);
             FormsAuthenticationTicket ticket = CreateTicket(cookieName, overdueTime, token);
             CreateCookie(ticket);
             Operation.Redirect(url);
+        }
+
+        /// <summary>
+        /// 获取需要跳转的Url
+        /// </summary>
+        /// <param name="token">凭据验证</param>
+        /// <returns>跳转Url</returns>
+        private string GetRedirectUrl(string token)
+        {
+            string url = string.Empty;
+            if (Link != "")
+            {
+                url = Link;
+            }
+            else if (ReturnUrl != "")
+            {
+                url = ReturnUrl;
+            }
+            if (url.Contains("?"))
+            {
+                url += "&token=" + token;
+            }
+            else if (!url.Contains("token="))
+            {
+                url += "?token=" + token;
+            }
+            return url;
         }
 
         /// <summary>
@@ -81,17 +94,24 @@ namespace SSO.Cross.Domain
         /// <param name="serviceUrl">认证服务地址</param>
         public void LogInClient(string serviceUrl, string cookieName, TimeSpan overdueTime)
         {
-            if (!IsLogin())
+            //登录或者验证Token不正确
+            if (IsLogin())
             {
-                if (ValidationToken())
-                {
-                    string token = Operation.GetRequest("token");
-                    var ticket = CreateTicket(cookieName, overdueTime, token);
-                    CreateCookie(ticket);
-                    Operation.Redirect(Operation.GetRequest("ReturnUrl"));
-                    return;
-                }
+                Redirect(serviceUrl);
             }
+            ValidationToken(serviceUrl);
+            string userData = secretService.Decryption(UserData);
+            var ticket = CreateTicket(cookieName, overdueTime, userData);
+            CreateCookie(ticket);
+            Operation.Redirect(ReturnUrl);
+        }
+
+        /// <summary>
+        /// 跳转到登录页面
+        /// </summary>
+        /// <param name="serviceUrl">登录页面地址</param>
+        private void Redirect(string serviceUrl)
+        {
             string url = "";
             if (serviceUrl.Contains("link"))
             {
@@ -99,7 +119,7 @@ namespace SSO.Cross.Domain
             }
             else
             {
-                url = serviceUrl + "?link=" + Operation.GetRequest("ReturnUrl");
+                url = serviceUrl + "?link=" + ReturnUrl;
             }
             Operation.Redirect(url);
         }
@@ -108,17 +128,27 @@ namespace SSO.Cross.Domain
         /// 验证Token
         /// </summary>
         /// <returns></returns>
-        public bool ValidationToken()
+        public void ValidationToken(string serviceUrl = null)
         {
-            string token = Operation.GetRequest("token");
-            //string dectToken = secretService.Decryption(token);
-            if (tokenService.GetUserData(token) != "")
+            if (string.IsNullOrEmpty(Token) || !string.IsNullOrEmpty(UserData))
             {
-                return true;
+                return;
             }
-            else
+            //是否同域
+            bool IsSameDomain = serviceUrl != null && (new Uri(serviceUrl)).Authority != (Operation.Uri()).Authority;
+            if (IsSameDomain)
             {
-                return false;
+                Operation.Redirect(serviceUrl + "&token=" + Token);
+            }
+            if (string.IsNullOrEmpty(serviceUrl))
+            {
+                serviceUrl = Link + "?token=" + Token;
+            }
+            string userData = tokenService.GetUserData(Token);
+            if (userData != "")
+            {
+                string url = Link + "?token=" + Token + "&userData=" + userData;
+                Operation.Redirect(url);
             }
         }
 
@@ -126,41 +156,43 @@ namespace SSO.Cross.Domain
         /// 判断是需要登录还是认证
         /// </summary>
         /// <returns>true 登录</returns>
-        public bool IsLogin()
+        private bool IsLogin()
         {
-            if (string.IsNullOrEmpty(Operation.GetRequest("token")))
+            if (string.IsNullOrEmpty(Token))
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         /// <summary>
         /// 获取UserData明文
         /// </summary>
         /// <returns>明文信息</returns>
-        public string GetUserData(string token = null)
+        public string GetUserData(string cookieName)
         {
-            if (token != null || ValidationToken())
-            {
-                if (token == null)
-                    token = Operation.GetRequest("token");
-                return tokenService.GetUserData(token);
-            }
-            return "";
+            string ticket = GetEncryUserData(cookieName);
+            var model = FormsAuthentication.Decrypt(ticket);
+            return model.UserData;
         }
 
         /// <summary>
-        /// 获取Cookie对应的值
+        /// 获取UserData密文
         /// </summary>
-        public string GetCookie(string cookieName)
+        private string GetEncryUserData(string cookieName)
         {
-            string ticket = Operation.GetCookie(cookieName)?.Value;
-            var model = FormsAuthentication.Decrypt(ticket);
-            return model.UserData.ToString();
+            return Operation.GetCookie(cookieName)?.Value;
         }
+
+        /// <summary>
+        /// 用户注销
+        /// </summary>
+        public void LogUp()
+        {
+            //注销登录的Cookies
+            FormsAuthentication.SignOut();
+            FormsAuthentication.RedirectToLoginPage();
+        }
+
     }
 }

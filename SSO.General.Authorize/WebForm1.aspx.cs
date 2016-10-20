@@ -6,6 +6,7 @@ namespace SSO.General.Authorize
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
+        public string Token;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -14,9 +15,9 @@ namespace SSO.General.Authorize
                 {
                     //string result = SSOGeneralSameDomain.GetCookieValue("CookiesTest", this);
                     SSOGeneralCrossDomain sso = new SSOGeneralCrossDomain(this);
-                    var token = sso.GetCookie("CookiesTest");
-                    var result = sso.GetUserData(token);
+                    var result = sso.GetUserData("CookiesTest");
                     txtUserData.Text = result;
+                    Token = result;
                 }
             }
         }

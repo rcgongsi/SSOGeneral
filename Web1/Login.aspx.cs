@@ -16,7 +16,7 @@ namespace Web1
             if (!IsPostBack)
             {
                 SSOGeneralCrossDomain sso = new SSOGeneralCrossDomain(this);
-                sso.LogInClient("http://localhost:51666/Login.aspx?link=http://localhost:56757/Login.aspx", "CookiesTest", new TimeSpan(0, 1, 1));
+                sso.LogInClient("http://127.0.0.1/SSO.General.Authorize/Login.aspx?link=http://localhost:56757/WebForm1.aspx", "CookiesTest", new TimeSpan(0, 1, 1));
             }
         }
     }

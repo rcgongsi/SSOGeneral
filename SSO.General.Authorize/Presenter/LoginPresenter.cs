@@ -21,6 +21,12 @@ namespace SSO.General.Authorize.Presenter
             LoginView.Submit += LoginView_Submit;
         }
 
+        public void Initialize(Page page)
+        {
+            SSOGeneralCrossDomain sso = new SSOGeneralCrossDomain(page);
+            sso.ValidationToken();
+        }
+
         /// <summary>
         /// 用户登录方法
         /// </summary>
@@ -30,11 +36,13 @@ namespace SSO.General.Authorize.Presenter
             string password = LoginView.Password;
             if (ValidationUserInfo(userName, password))
             {
-                //同域单点登录
-                //SSOGeneral sso = new SSOGeneralSameDomain("CookiesTest", new TimeSpan(0, 1, 0), e.Page);
-                //sso.LogIn("Chenxy");
+                ////同域单点登录
+                //SSOGeneralSameDomain sso = new SSOGeneralSameDomain("CookiesTest", new TimeSpan(0, 1, 0), e.Page);
+                //sso.LogIn(userName);
+
+                //跨域单点登录
                 SSOGeneralCrossDomain sso = new SSOGeneralCrossDomain(e.Page);
-                sso.LogIn("Chenxy", "CookiesTest", new TimeSpan(0, 1, 1));
+                sso.LogIn("Chenxy", "CookiesTest", new TimeSpan(1, 0, 0));
             }
         }
 

@@ -26,38 +26,11 @@ namespace SSO.Same.Domain
         /// 用户登录
         /// </summary>
         /// <param name="userData">用户额外信息</param>
-        public override void LogIn(string userData = null)
+        public override void LogIn(string userData)
         {
             FormsAuthenticationTicket ticket = CreateTicket(userData);
             CreateCookie(ticket);
             RedirectPage();
-        }
-
-        /// <summary>
-        /// 用户注销
-        /// </summary>
-        public static void LogUp()
-        {
-            FormsAuthentication.SignOut();
-            FormsAuthentication.RedirectToLoginPage();
-        }
-
-        /// <summary>
-        /// 获取当前登录用户绑定值
-        /// </summary>
-        /// <returns>对应的值</returns>
-        public static string GetCookieValue(string cookieName, Page page)
-        {
-            Operation Operation = new OperationPage(page);
-            string result = Operation.GetCookie(cookieName)?.Value;
-            return result != null ? FormsAuthentication.Decrypt(result).UserData : "";
-        }
-
-        public static string GetCookieValue(string cookieName, HttpContextBase context)
-        {
-            Operation Operation = new OperationHttpContext(context);
-            string result = Operation.GetCookie(cookieName)?.Value;
-            return result != null ? FormsAuthentication.Decrypt(result).UserData : "";
         }
 
         /// <summary>
@@ -95,5 +68,37 @@ namespace SSO.Same.Domain
         {
             return new FormsAuthenticationTicket(1, CookieName, DateTime.Now, DateTime.Now.Add(OverdueInterval), true, userData);
         }
+
+        /// <summary>
+        /// 用户注销
+        /// </summary>
+        public static void LogUp()
+        {
+            FormsAuthentication.SignOut();
+            FormsAuthentication.RedirectToLoginPage();
+        }
+
+        /// <summary>
+        /// 获取当前登录用户绑定值
+        /// </summary>
+        /// <returns>对应的值</returns>
+        public static string GetCookieValue(string cookieName, Page page)
+        {
+            Operation Operation = new OperationPage(page);
+            string result = Operation.GetCookie(cookieName)?.Value;
+            return result != null ? FormsAuthentication.Decrypt(result).UserData : "";
+        }
+
+        /// <summary>
+        /// 获取当前登录用户绑定值
+        /// </summary>
+        /// <returns>对应的值</returns>
+        public static string GetCookieValue(string cookieName, HttpContextBase context)
+        {
+            Operation Operation = new OperationHttpContext(context);
+            string result = Operation.GetCookie(cookieName)?.Value;
+            return result != null ? FormsAuthentication.Decrypt(result).UserData : "";
+        }
+
     }
 }

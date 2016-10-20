@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 
 namespace SSO.Cross.Domain
 {
@@ -31,5 +32,25 @@ namespace SSO.Cross.Domain
         /// </summary>
         /// <param name="url">目标URL</param>
         public abstract void Redirect(string url);
+
+        /// <summary>
+        /// 设置缓存
+        /// </summary>
+        /// <param name="name">缓存名称</param>
+        /// <param name="value">缓存内容</param>
+        public abstract void SetCache(string name, string value);
+
+        /// <summary>
+        /// 获取缓存
+        /// </summary>
+        /// <param name="name">缓存名称</param>
+        /// <returns>缓存内容</returns>
+        public abstract object GetCache(string name);
+
+        /// <summary>
+        /// 获取当前URL
+        /// </summary>
+        /// <returns></returns>
+        public abstract Uri Uri();
     }
 }

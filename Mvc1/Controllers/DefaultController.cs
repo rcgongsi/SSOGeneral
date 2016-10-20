@@ -10,9 +10,11 @@ namespace Mvc1.Controllers
     [Authorize]
     public class DefaultController : Controller
     {
+        public const string cookeName = "CookiesTest";
         // GET: Default
         public ActionResult Index()
         {
+            TempData["UserData"] = SSOGeneralSameDomain.GetCookieValue(cookeName, HttpContext);
             return View();
         }
 
@@ -27,7 +29,7 @@ namespace Mvc1.Controllers
         [ValidateAntiForgeryToken]
         public void Login(string name)
         {
-            SSOGeneral sso = new SSOGeneralSameDomain("CookiesTest", new TimeSpan(0, 1, 0), HttpContext);
+            SSOGeneral sso = new SSOGeneralSameDomain(cookeName, new TimeSpan(0, 1, 0), HttpContext);
             sso.LogIn(name);
         }
     }

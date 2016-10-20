@@ -13,6 +13,7 @@
             <h3>Authorize</h3>
             <asp:TextBox ID="txtUserData" runat="server"></asp:TextBox>
             <asp:Button Text="注销" runat="server" ID="SignOut" OnClick="SignOut_Click" />
+            <a href="http://localhost:56757/WebForm1.aspx?token=<%=Token %>">Web1</a>
         </div>
     </form>
 </body>

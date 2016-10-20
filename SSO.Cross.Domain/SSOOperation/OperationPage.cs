@@ -36,5 +36,20 @@ namespace SSO.Cross.Domain
         {
             Page.Response.Redirect(url);
         }
+
+        public override void SetCache(string name, string value)
+        {
+            Page.Cache.Insert(name, value);
+        }
+
+        public override object GetCache(string name)
+        {
+            return Page.Cache.Get(name);
+        }
+
+        public override Uri Uri()
+        {
+            return new Uri(Page.Request.Url.ToString());
+        }
     }
 }

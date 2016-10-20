@@ -1,6 +1,7 @@
 ﻿using SSO.General.Authorize.Presenter;
 using SSO.General.Authorize.View;
 using System;
+using System.Web;
 
 namespace SSO.General.Authorize
 {
@@ -14,11 +15,16 @@ namespace SSO.General.Authorize
 
         public Login()
         {
+            var list = HttpContext.Current.Request.Cookies["TokenList"];
             Presenter = new LoginPresenter(this);
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                Presenter.Initialize(this);
+            }
         }
 
         /// <summary>
