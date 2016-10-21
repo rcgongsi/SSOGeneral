@@ -95,7 +95,7 @@ namespace SSO.Cross.Domain
         public void LogInClient(string serviceUrl, string cookieName, TimeSpan overdueTime)
         {
             //登录或者验证Token不正确
-            if (IsLogin())
+            if (IsNeedLogin())
             {
                 Redirect(serviceUrl);
             }
@@ -156,7 +156,7 @@ namespace SSO.Cross.Domain
         /// 判断是需要登录还是认证
         /// </summary>
         /// <returns>true 登录</returns>
-        private bool IsLogin()
+        private bool IsNeedLogin()
         {
             if (string.IsNullOrEmpty(Token))
             {
