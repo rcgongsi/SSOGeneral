@@ -5,7 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="Scripts/jquery-3.1.1.min.js"></script>
     <title>用户登录</title>
+    <script type="text/javascript">
+        function LogIn(url) {
+            $.get(url);
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">

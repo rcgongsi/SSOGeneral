@@ -43,6 +43,8 @@ namespace SSO.General.Authorize.Presenter
                 //跨域单点登录
                 SSOGeneralCrossDomain sso = new SSOGeneralCrossDomain(e.Page);
                 sso.LogIn("Chenxy", "CookiesTest", new TimeSpan(1, 0, 0));
+
+                //可以使用JSONP，进行向其他网站进行用户登录注册。
             }
         }
 

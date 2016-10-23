@@ -33,6 +33,7 @@ namespace SSO.General.Authorize
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             Submit(sender, new AuthorizeEventArgs(this));
+            ClientScript.RegisterStartupScript(ClientScript.GetType(), "LogIn", "<script>LogIn(\"http://localhost:56757/WebForm1.aspx?logType=login\");</script>");
         }
     }
 }
