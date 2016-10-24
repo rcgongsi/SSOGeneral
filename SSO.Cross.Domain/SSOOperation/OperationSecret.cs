@@ -1,4 +1,3 @@
-
 using SSO.Cross.Domain.Tools;
 
 namespace SSO.Cross.Domain.SSOOperation

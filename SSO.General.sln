@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc2", "Mvc2\Mvc2.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSO.Cross.Domain", "SSO.Cross.Domain\SSO.Cross.Domain.csproj", "{7D0FAC1B-8CB9-4B10-93AA-26052CAF626A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSO.Helper", "SSO.Helper\SSO.Helper.csproj", "{824F4F0A-F896-458B-A268-255835169473}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{7D0FAC1B-8CB9-4B10-93AA-26052CAF626A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D0FAC1B-8CB9-4B10-93AA-26052CAF626A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D0FAC1B-8CB9-4B10-93AA-26052CAF626A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{824F4F0A-F896-458B-A268-255835169473}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{824F4F0A-F896-458B-A268-255835169473}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{824F4F0A-F896-458B-A268-255835169473}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{824F4F0A-F896-458B-A268-255835169473}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

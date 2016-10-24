@@ -72,7 +72,7 @@ namespace SSO.Same.Domain
         /// <summary>
         /// 用户注销
         /// </summary>
-        public static void LogUp()
+        public static void LogOut()
         {
             FormsAuthentication.SignOut();
             FormsAuthentication.RedirectToLoginPage();
@@ -99,6 +99,5 @@ namespace SSO.Same.Domain
             string result = Operation.GetCookie(cookieName)?.Value;
             return result != null ? FormsAuthentication.Decrypt(result).UserData : "";
         }
-
     }
 }

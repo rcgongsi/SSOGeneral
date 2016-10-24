@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7D0FAC1B-8CB9-4B10-93AA-26052CAF626A}</ProjectGuid>
+    <ProjectGuid>{824F4F0A-F896-458B-A268-255835169473}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SSO.Cross.Domain</RootNamespace>
-    <AssemblyName>SSO.Cross.Domain</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>SSO.Helper</RootNamespace>
+    <AssemblyName>SSO.Helper</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,11 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -45,23 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\SSOToken.cs" />
+    <Compile Include="HTTPOperation\Operation.cs" />
+    <Compile Include="HTTPOperation\OperationHttpContext.cs" />
+    <Compile Include="HTTPOperation\OperationPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SSOGeneral.cs" />
-    <Compile Include="SSOGeneralCrossDomainbase.cs" />
-    <Compile Include="SSOOperation\IOperationSecret.cs" />
-    <Compile Include="SSOOperation\IOperationToken.cs" />
-    <Compile Include="SSOOperation\Operation.cs" />
-    <Compile Include="SSOOperation\OperationCache.cs" />
-    <Compile Include="SSOOperation\OperationHttpContext.cs" />
-    <Compile Include="SSOOperation\OperationPage.cs" />
-    <Compile Include="SSOOperation\OperationSecret.cs" />
-    <Compile Include="SSOOperation\OperationCookies.cs" />
+    <Compile Include="SSOCrossDomain.cs" />
+    <Compile Include="SSOSameDomain.cs" />
     <Compile Include="Tools\ByteHelper.cs" />
     <Compile Include="Tools\KeyHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <Content Include="SSO.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

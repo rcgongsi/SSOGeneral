@@ -5,13 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script src="Scripts/jquery-3.1.1.min.js"></script>
     <title>用户登录</title>
-    <script type="text/javascript">
-        function LogIn(url) {
-            $.get(url);
-        }
-    </script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.8.0.js" type="text/javascript"></script>
+    <script src="SSO.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">

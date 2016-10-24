@@ -1,9 +1,4 @@
-﻿using SSO.Same.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Mvc2.Controllers
 {
@@ -13,7 +8,7 @@ namespace Mvc2.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            TempData["UserData"] = SSOGeneralSameDomain.GetCookieValue("CookiesTest", HttpContext);
+            //TempData["UserData"] = SSOGeneralSameDomain.GetCookieValue("CookiesTest", HttpContext);
             return View();
         }
     }

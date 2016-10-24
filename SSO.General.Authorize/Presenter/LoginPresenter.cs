@@ -1,6 +1,5 @@
-﻿using SSO.Cross.Domain;
-using SSO.General.Authorize.View;
-using SSO.Same.Domain;
+﻿using SSO.General.Authorize.View;
+using SSO.Helper;
 using System;
 using System.Collections.Generic;
 using System.Web.UI;
@@ -23,8 +22,8 @@ namespace SSO.General.Authorize.Presenter
 
         public void Initialize(Page page)
         {
-            SSOGeneralCrossDomain sso = new SSOGeneralCrossDomain(page);
-            sso.ValidationToken();
+            //SSOGeneralCrossDomainbase sso = new SSOGeneralCrossDomainbase(page);
+            //sso.ValidationToken();
         }
 
         /// <summary>
@@ -41,10 +40,8 @@ namespace SSO.General.Authorize.Presenter
                 //sso.LogIn(userName);
 
                 //跨域单点登录
-                SSOGeneralCrossDomain sso = new SSOGeneralCrossDomain(e.Page);
-                sso.LogIn("Chenxy", "CookiesTest", new TimeSpan(1, 0, 0));
-
-                //可以使用JSONP，进行向其他网站进行用户登录注册。
+                SSOCrossDomain cross = new SSOCrossDomain(e.Page);
+                cross.LogIn("CookiesTest", new TimeSpan(0, 1, 0), userName);
             }
         }
 

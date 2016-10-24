@@ -9,7 +9,7 @@ namespace SSO.Cross.Domain
     /// <summary>
     /// 跨域单点登录服务端
     /// </summary>
-    public class SSOGeneralCrossDomain : SSOGeneral
+    public class SSOGeneralCrossDomainbase : SSOGeneral
     {
         internal IOperationSecret secretService = new OperationSecret();
         internal IOperationToken tokenService;
@@ -18,13 +18,13 @@ namespace SSO.Cross.Domain
         internal string Link { get { return Operation.GetRequest("link"); } }
         internal string UserData { get { return Operation.GetRequest("userData"); } }
 
-        public SSOGeneralCrossDomain(HttpContextBase context)
+        public SSOGeneralCrossDomainbase(HttpContextBase context)
         {
             Operation = new OperationHttpContext(context);
             tokenService = new OperationCache(Operation);
         }
 
-        public SSOGeneralCrossDomain(Page page)
+        public SSOGeneralCrossDomainbase(Page page)
         {
             Operation = new OperationPage(page);
             tokenService = new OperationCache(Operation);
@@ -187,12 +187,11 @@ namespace SSO.Cross.Domain
         /// <summary>
         /// 用户注销
         /// </summary>
-        public void LogUp()
+        public void LogOut()
         {
             //注销登录的Cookies
             FormsAuthentication.SignOut();
             FormsAuthentication.RedirectToLoginPage();
         }
-
     }
 }
