@@ -1,15 +1,5 @@
-//--------------------------------------------
-// Copyright (C) 软通动力信息技术（集团）有限公司
-// filename :SSOSameDomain
-// created by 晨星宇
-// at 2016/10/24 12:56:42
-//--------------------------------------------
 using SSO.Helper.HTTPOperation;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -47,34 +37,6 @@ namespace SSO.Helper
         }
 
         /// <summary>
-        /// 创建Cookie
-        /// </summary>
-        internal void CreateCookie(FormsAuthenticationTicket ticket)
-        {
-            HttpCookie cookie = new HttpCookie(ticket.Name, FormsAuthentication.Encrypt(ticket));
-            cookie.Expires = ticket.Expiration;
-            Operation.SetCookie(cookie);
-        }
-
-        /// <summary>
-        /// 登录成功跳转
-        /// </summary>
-        internal void RedirectPage()
-        {
-            if (Operation.GetRequest("link") != "")
-            {
-                Operation.Redirect(Operation.GetRequest("link") + Operation.GetRequest("ReturnUrl"));
-                return;
-            }
-            if (Operation.GetRequest("ReturnUrl") != "")
-            {
-                Operation.Redirect(Operation.GetRequest("ReturnUrl"));
-                return;
-            }
-            Operation.Redirect("/");
-        }
-
-        /// <summary>
         /// 用户注销
         /// </summary>
         public void LogOut()
@@ -91,5 +53,34 @@ namespace SSO.Helper
             string result = Operation.GetCookie(cookieName)?.Value;
             return result != null ? FormsAuthentication.Decrypt(result).UserData : "";
         }
+
+        /// <summary>
+        /// 创建Cookie
+        /// </summary>
+        private void CreateCookie(FormsAuthenticationTicket ticket)
+        {
+            HttpCookie cookie = new HttpCookie(ticket.Name, FormsAuthentication.Encrypt(ticket));
+            cookie.Expires = ticket.Expiration;
+            Operation.SetCookie(cookie);
+        }
+
+        /// <summary>
+        /// 登录成功跳转
+        /// </summary>
+        private void RedirectPage()
+        {
+            if (!string.IsNullOrEmpty(Operation.GetRequest("link")))
+            {
+                Operation.Redirect(Operation.GetRequest("link"));
+                return;
+            }
+            if (!string.IsNullOrEmpty(Operation.GetRequest("ReturnUrl")))
+            {
+                Operation.Redirect(Operation.GetRequest("ReturnUrl"));
+                return;
+            }
+            Operation.Redirect("/");
+        }
+
     }
 }

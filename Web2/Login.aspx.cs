@@ -1,10 +1,5 @@
 ﻿using SSO.Helper;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Web2
 {
@@ -15,7 +10,7 @@ namespace Web2
             if (!IsPostBack)
             {
                 SSOCrossDomain cross = new SSOCrossDomain(this);
-                cross.ValidationLogIn("CookiesTest", new TimeSpan(0, 10, 0));
+                cross.ValidationLogIn("CookieWeb2", new TimeSpan(0, 10, 0));
             }
         }
     }

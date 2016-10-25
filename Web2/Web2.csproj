@@ -16,7 +16,7 @@
     <RootNamespace>Web2</RootNamespace>
     <AssemblyName>Web2</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -129,10 +129,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\SSO.General.Helper\SSO.Same.Domain.csproj">
-      <Project>{b5876bea-6644-4627-9539-30f72dbd5505}</Project>
-      <Name>SSO.Same.Domain</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SSO.Helper\SSO.Helper.csproj">
       <Project>{824f4f0a-f896-458b-a268-255835169473}</Project>
       <Name>SSO.Helper</Name>
@@ -153,7 +149,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>56765</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:56765/</IISUrl>
+          <IISUrl>http://localhost/Web2</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

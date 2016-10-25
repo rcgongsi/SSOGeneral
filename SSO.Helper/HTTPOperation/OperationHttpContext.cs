@@ -37,7 +37,9 @@ namespace SSO.Helper.HTTPOperation
 
         public override void PerformJs(string text)
         {
-            
+            text = text.Replace("<script>", "");
+            text = text.Replace("</script>", "");
+            PerformJavascript = text;
         }
 
         public override Uri Uri()

@@ -49,8 +49,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SSOCrossDomain.cs" />
     <Compile Include="SSOSameDomain.cs" />
-    <Compile Include="Tools\ByteHelper.cs" />
-    <Compile Include="Tools\KeyHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="SSO.js" />

@@ -9,6 +9,11 @@ namespace SSO.Helper.HTTPOperation
     public abstract class Operation
     {
         /// <summary>
+        /// 执行授权的脚本
+        /// </summary>
+        public string PerformJavascript { get; set; }
+
+        /// <summary>
         /// 获取参数
         /// </summary>
         /// <param name="request">参数名</param>

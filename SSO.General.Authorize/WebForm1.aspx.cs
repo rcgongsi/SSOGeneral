@@ -1,6 +1,4 @@
-﻿using SSO.Cross.Domain;
-using SSO.Helper;
-using SSO.Same.Domain;
+﻿using SSO.Helper;
 using System;
 
 namespace SSO.General.Authorize
@@ -13,7 +11,8 @@ namespace SSO.General.Authorize
             {
                 if (User.Identity.IsAuthenticated)
                 {
-                    //string result = SSOGeneralSameDomain.GetCookieValue("CookiesTest", this);
+                    //string result = new SSOSameDomain(this).GetUserData("CookiesTest");
+                    //txtUserData.Text = result;
                     SSOCrossDomain cross = new SSOCrossDomain(this);
                     txtUserData.Text = cross.GetUserData("CookiesTest");
                 }
@@ -22,7 +21,7 @@ namespace SSO.General.Authorize
 
         protected void SignOut_Click(object sender, EventArgs e)
         {
-            //SSOGeneralSameDomain.LogOut();
+            //new SSOSameDomain(this).LogOut();
             SSOCrossDomain cross = new SSOCrossDomain(this);
             cross.LogOut();
         }

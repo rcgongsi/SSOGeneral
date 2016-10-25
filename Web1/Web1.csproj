@@ -130,14 +130,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\SSO.Cross.Domain\SSO.Cross.Domain.csproj">
-      <Project>{7D0FAC1B-8CB9-4B10-93AA-26052CAF626A}</Project>
-      <Name>SSO.Cross.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SSO.General.Helper\SSO.Same.Domain.csproj">
-      <Project>{b5876bea-6644-4627-9539-30f72dbd5505}</Project>
-      <Name>SSO.Same.Domain</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SSO.Helper\SSO.Helper.csproj">
       <Project>{824f4f0a-f896-458b-a268-255835169473}</Project>
       <Name>SSO.Helper</Name>

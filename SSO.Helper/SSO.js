@@ -1,13 +1,11 @@
 ﻿function LogIn() {
     var urlList = arguments;
-    for (var url in urlList) {
-        $.ajax({
-            url: url,
-            dataType: "jsonp",
-            jsonp: "callback",
-            success: function (data) {
-                console.log(data)
-            }
-        });
+    for (var i = 1; i < urlList.length; i++) {
+        CreateScript(urlList[i]);
     }
+    window.location.href = urlList[0];
+}
+
+function CreateScript(src) {
+    $("<script><//script>").attr("src", src).appendTo("body")
 }
