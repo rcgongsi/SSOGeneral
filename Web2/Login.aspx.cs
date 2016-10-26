@@ -1,7 +1,7 @@
 ﻿using SSO.Helper;
 using System;
 
-namespace Web1
+namespace Web2
 {
     public partial class Login : System.Web.UI.Page
     {
@@ -10,7 +10,7 @@ namespace Web1
             if (!IsPostBack)
             {
                 SSOCrossDomain cross = new SSOCrossDomain(this);
-                cross.ValidationLogIn("CookieWeb1", new TimeSpan(0, 2, 0));
+                cross.ValidationLogIn("CookieWeb2", new TimeSpan(0, 10, 0));
             }
         }
     }

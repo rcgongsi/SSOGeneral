@@ -7,7 +7,7 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace Web1 {
+namespace Web2 {
     
     
     public partial class Login {

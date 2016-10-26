@@ -48,7 +48,7 @@
     <Compile Include="Model\SSOToken.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SSOGeneral.cs" />
-    <Compile Include="SSOGeneralCrossDomain.cs" />
+    <Compile Include="SSOGeneralCrossDomainbase.cs" />
     <Compile Include="SSOOperation\IOperationSecret.cs" />
     <Compile Include="SSOOperation\IOperationToken.cs" />
     <Compile Include="SSOOperation\Operation.cs" />

@@ -1,6 +1,5 @@
-﻿using SSO.Cross.Domain;
-using SSO.General.Authorize.View;
-using SSO.Same.Domain;
+﻿using SSO.General.Authorize.View;
+using SSO.Helper;
 using System;
 using System.Collections.Generic;
 using System.Web.UI;
@@ -23,8 +22,8 @@ namespace SSO.General.Authorize.Presenter
 
         public void Initialize(Page page)
         {
-            SSOGeneralCrossDomain sso = new SSOGeneralCrossDomain(page);
-            sso.ValidationToken();
+            SSOCrossDomain cross = new SSOCrossDomain(page);
+            cross.ValidationLogIn("CookiesTest", new TimeSpan(0, 1, 0));
         }
 
         /// <summary>
@@ -37,12 +36,12 @@ namespace SSO.General.Authorize.Presenter
             if (ValidationUserInfo(userName, password))
             {
                 ////同域单点登录
-                //SSOGeneralSameDomain sso = new SSOGeneralSameDomain("CookiesTest", new TimeSpan(0, 1, 0), e.Page);
-                //sso.LogIn(userName);
+                //SSOSameDomain sso = new SSOSameDomain(e.Page);
+                //sso.LogIn("CookiesTest", new TimeSpan(0, 1, 0), userName);
 
                 //跨域单点登录
-                SSOGeneralCrossDomain sso = new SSOGeneralCrossDomain(e.Page);
-                sso.LogIn("Chenxy", "CookiesTest", new TimeSpan(1, 0, 0));
+                SSOCrossDomain cross = new SSOCrossDomain(e.Page);
+                cross.LogIn("CookiesTest", new TimeSpan(0, 1, 0), userName);
             }
         }
 

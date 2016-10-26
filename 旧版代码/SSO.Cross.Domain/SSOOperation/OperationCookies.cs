@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using SSO.Cross.Domain.Model;
 using System;

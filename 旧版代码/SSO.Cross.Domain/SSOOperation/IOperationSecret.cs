@@ -1,5 +1,3 @@
-
-
 namespace SSO.Cross.Domain.SSOOperation
 {
     /// <summary>

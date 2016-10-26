@@ -129,6 +129,8 @@
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
+    <Content Include="scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -162,9 +164,9 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SSO.General.Helper\SSO.Same.Domain.csproj">
-      <Project>{B5876BEA-6644-4627-9539-30F72DBD5505}</Project>
-      <Name>SSO.Same.Domain</Name>
+    <ProjectReference Include="..\SSO.Helper\SSO.Helper.csproj">
+      <Project>{824F4F0A-F896-458B-A268-255835169473}</Project>
+      <Name>SSO.Helper</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

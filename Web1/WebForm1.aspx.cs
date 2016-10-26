@@ -1,31 +1,28 @@
-﻿using SSO.Cross.Domain;
-using SSO.Same.Domain;
+﻿using SSO.Helper;
 using System;
 
 namespace SSO.General.Web1
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
-        public string Token;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 if (User.Identity.IsAuthenticated)
                 {
-                    //var result = SSOGeneralSameDomain.GetCookieValue("CookiesTest", this);
-                    SSOGeneralCrossDomain sso = new SSOGeneralCrossDomain(this);
-                    var result = sso.GetUserData("CookiesTest");
+                    var result = new SSOSameDomain(this).GetUserData("CookiesTest");
                     txtUserData.Text = result;
-                    Token = Request["token"];
+                    //SSOCrossDomain cross = new SSOCrossDomain(this);
+                    //txtUserData.Text = cross.GetUserData("CookieWeb1");
                 }
             }
         }
 
         protected void SignOut_Click(object sender, EventArgs e)
         {
-            //SSOGeneralSameDomain.LogUp();
-            new SSOGeneralCrossDomain(this).LogUp();
+            //new SSOSameDomain(this).LogOut();
+            new SSOCrossDomain(this).LogOut();
         }
     }
 }

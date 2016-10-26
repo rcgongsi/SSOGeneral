@@ -16,7 +16,7 @@
     <RootNamespace>SSO.General.Authorize</RootNamespace>
     <AssemblyName>SSO.General.Authorize</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -101,6 +101,8 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="favicon.ico" />
+    <Content Include="SSO.js" />
     <Content Include="单点登录.vsdx" />
   </ItemGroup>
   <ItemGroup>
@@ -132,18 +134,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SSO.Cross.Domain\SSO.Cross.Domain.csproj">
-      <Project>{7D0FAC1B-8CB9-4B10-93AA-26052CAF626A}</Project>
-      <Name>SSO.Cross.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SSO.General.Helper\SSO.Same.Domain.csproj">
-      <Project>{B5876BEA-6644-4627-9539-30F72DBD5505}</Project>
-      <Name>SSO.Same.Domain</Name>
+    <ProjectReference Include="..\SSO.Helper\SSO.Helper.csproj">
+      <Project>{824f4f0a-f896-458b-a268-255835169473}</Project>
+      <Name>SSO.Helper</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
@@ -156,7 +157,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51666</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://127.0.0.1/SSO.General.Authorize</IISUrl>
+          <IISUrl>http://localhost:51666/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -15,7 +15,6 @@ namespace SSO.General.Authorize
 
         public Login()
         {
-            var list = HttpContext.Current.Request.Cookies["TokenList"];
             Presenter = new LoginPresenter(this);
         }
 

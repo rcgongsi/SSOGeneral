@@ -1,4 +1,4 @@
-﻿using SSO.Same.Domain;
+﻿using SSO.Helper;
 using System;
 
 namespace SSO.General.Web2
@@ -11,15 +11,18 @@ namespace SSO.General.Web2
             {
                 if (User.Identity.IsAuthenticated)
                 {
-                    string result = SSOGeneralSameDomain.GetCookieValue("CookiesTest", this);
-                    txtUserData.Text = result;
+                    //string result = new SSOSameDomain(this).GetUserData("CookiesTest");
+                    //txtUserData.Text = result;
+                    SSOCrossDomain cross = new SSOCrossDomain(this);
+                    txtUserData.Text = cross.GetUserData("CookieWeb2");
                 }
             }
         }
 
         protected void SignOut_Click(object sender, EventArgs e)
         {
-            SSOGeneralSameDomain.LogUp();
+            //new SSOSameDomain(this).LogOut();
+            new SSOCrossDomain(this).LogOut();
         }
     }
 }

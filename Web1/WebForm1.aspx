@@ -13,7 +13,6 @@
             <h3>Web1</h3>
             <asp:TextBox ID="txtUserData" runat="server"></asp:TextBox>
             <asp:Button Text="注销" runat="server" ID="SignOut" OnClick="SignOut_Click" />
-            <a href="http://localhost:56765/WebForm1.aspx?token=<%=Token %>">链接到Web2</a>
         </div>
     </form>
 </body>
